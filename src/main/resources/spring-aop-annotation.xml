@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop.xsd">
+	<!--proxy-target-class true:cglib动态代理 false：jdk动态代理 默认是jdk动态代理-->
+	<aop:aspectj-autoproxy/>
+	<bean id="myAnnotationAspect" class="com.dbapp.spring.aop.MyAnnotationAspect"/>
+	<!--真实的服务提供者，目标对象target-->
+	<bean id="staffInfoService" class="com.dbapp.spring.service.impl.StaffInfoServiceImpl"/>
+</beans>

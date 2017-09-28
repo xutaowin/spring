@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd">
+	<!--3种实例化bean begin-->
+    <!--1.用构造器来实例化-->
+	<!--scope="prototype" 非单例模式 scope="singleton" 单例模式 默认是单例模式-->
+    <bean id="personService" class="com.dbapp.spring.service.impl.PersonServiceImpl" scope="singleton" lazy-init="true"></bean>
+	<!--2.使用静态工厂方法实例化-->
+	<bean id="personService2"  class="com.dbapp.spring.factory.PersonServiceFactory" factory-method="createPersonService"></bean>
+	<!--3.使用实例工厂方法实例化-->
+	<bean id="personServiceFactory"  class="com.dbapp.spring.factory.PersonServiceFactory"></bean>
+	<bean id="personService3" factory-bean="personServiceFactory" factory-method="createPersonService2"></bean>
+	<!--3种实例化bean end-->
+</beans>

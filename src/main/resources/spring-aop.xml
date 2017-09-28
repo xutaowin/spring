@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop.xsd">
+	<!--真实的服务提供者，目标对象target-->
+	<bean id="staffInfoService" class="com.dbapp.spring.service.impl.StaffInfoServiceImpl"/>
+	<!--增强代码 切面-->
+	<bean id="myConfigAspect" class="com.dbapp.spring.aop.MyConfigAspect"/>
+	<!--aop配置-->
+	<aop:config>
+		<!--在切面上织入通知-->
+		<aop:aspect id="asp" ref="myConfigAspect">
+			<!--切点-->
+			<!--第一个*表示所有返回值 ..对service包以及子包下的所有-->
+			<!--被拦截的方法的返回值是String-->
+			<!--<aop:pointcut id="mycut" expression="execution(java.lang.String com.dbapp.spring.service..*.*(..))"/>-->
+			<!--被拦截的方法的第一个参数的String-->
+			<!--<aop:pointcut id="mycut" expression="execution(* com.dbapp.spring.service..*.*(java.lang.String,..))"/>-->
+			<!--被拦截的方法的返回值是非空-->
+			<!--<aop:pointcut id="mycut" expression="execution(!void com.dbapp.spring.service..*.*(..))"/>-->
+			<aop:pointcut id="mycut" expression="execution(* com.dbapp.spring.service..*.*(..))"/>
+			<aop:before pointcut-ref="mycut" method="doAcceccCheck"/>
+			<aop:after-returning pointcut-ref="mycut" method="doAfterReturning"/>
+			<aop:after pointcut-ref="mycut" method="doAfter"/>
+			<aop:after-throwing pointcut-ref="mycut" method="doAfterThrowing"/>
+			<aop:around pointcut-ref="mycut" method="doBasicProfiling"/>
+		</aop:aspect>
+	</aop:config>
+</beans>
