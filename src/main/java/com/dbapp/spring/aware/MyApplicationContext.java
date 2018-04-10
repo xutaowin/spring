@@ -13,14 +13,21 @@ import org.springframework.context.ApplicationContextAware;
  * @Time： 15:03
  */
 public class MyApplicationContext implements BeanNameAware,ApplicationContextAware {
+    private ApplicationContext applicationContext;
     private String beanName;
+
+    @Override
     public void setBeanName(String beanName) {
         this.beanName = beanName;
         System.out.println("MyApplicationContext beanName:"+beanName);
     }
 
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        //通过重写的接口方法，获取spring容器实例context，进而获取容器中相关bean资源
-        System.out.println(applicationContext.getBean(this.beanName));
+    @Override
+    public void setApplicationContext(ApplicationContext context) throws BeansException {
+        this.applicationContext = context;
+    }
+
+    public Object getBean(String beanName){
+        return this.applicationContext.getBean(beanName);
     }
 }
