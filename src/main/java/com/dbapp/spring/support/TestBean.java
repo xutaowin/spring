@@ -14,4 +14,7 @@ public class TestBean {
     public TestBean(){
         System.out.println("TestBean 实例化。");
     }
+    public void hello(){
+        System.out.println("TestBean hello");
+    }
 }

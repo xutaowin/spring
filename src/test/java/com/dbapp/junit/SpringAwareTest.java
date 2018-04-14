@@ -1,6 +1,7 @@
 package com.dbapp.junit;
 
 import com.dbapp.spring.aware.MyApplicationContext;
+import com.dbapp.spring.support.TestBean;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -32,5 +33,7 @@ public class SpringAwareTest {
     public void testAware() throws Exception {
         AbstractApplicationContext ctx = new ClassPathXmlApplicationContext("spring-aware.xml");
         myApplicationContext = (MyApplicationContext)ctx.getBean("myContext");
+        TestBean testBean = (TestBean)myApplicationContext.getBean("testBean");
+        testBean.hello();
     }
 }

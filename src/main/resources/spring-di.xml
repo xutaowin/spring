@@ -19,6 +19,6 @@
 	<bean id="personService2" class="com.dbapp.spring.service.impl.PersonServiceImpl">
 		<constructor-arg name="personDao" ref="personDao"></constructor-arg>
 	</bean>
-	<!--2种依赖注入 end-->
 	<bean id="personDao" class="com.dbapp.spring.dao.impl.PersonDaoImpl"></bean>
+	<!--2种依赖注入 end-->
 </beans>

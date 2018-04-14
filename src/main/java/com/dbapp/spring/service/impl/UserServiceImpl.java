@@ -1,5 +1,6 @@
 package com.dbapp.spring.service.impl;
 
+import com.dbapp.spring.dao.UserDao;
 import com.dbapp.spring.service.UserService;
 
 /**
@@ -10,11 +11,28 @@ import com.dbapp.spring.service.UserService;
  * @Time： 23:07
  */
 public class UserServiceImpl implements UserService{
+
+    private UserDao userDao;
+
+    public UserServiceImpl(){
+        System.out.println("创建Bean");
+    }
+
     public void add() {
-        System.out.println("用户添加");
+        System.out.println("SERVICE用户添加");
+        userDao.add();
     }
 
     public void update() {
-        System.out.println("用户更新");
+        System.out.println("SERVICE用户更新");
+        userDao.update();
+    }
+
+    public UserDao getUserDao() {
+        return userDao;
+    }
+
+    public void setUserDao(UserDao userDao) {
+        this.userDao = userDao;
     }
 }

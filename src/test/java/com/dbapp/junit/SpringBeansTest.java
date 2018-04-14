@@ -6,9 +6,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-
+//@Component
 public class SpringBeansTest {
 
     //@Autowired

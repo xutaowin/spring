@@ -20,6 +20,7 @@ public class PersonDaoImpl implements PersonDao {
     public void init(){
         System.out.println("========PersonDao init===========");
     }
+    @Override
     public void save() {
         System.out.println("PersonDao save()");
     }

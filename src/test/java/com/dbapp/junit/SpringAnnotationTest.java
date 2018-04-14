@@ -4,14 +4,19 @@ import com.dbapp.spring.service.PersonService;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.PostConstruct;
-
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath:spring-annotation.xml"})
 public class SpringAnnotationTest {
 
-    //@Autowired
+    @Autowired
     private PersonService personService;
     @PostConstruct
     public void init(){
@@ -30,10 +35,10 @@ public class SpringAnnotationTest {
 
     @Test
     public void testAnnotationConfig() throws Exception {
-        AbstractApplicationContext ctx = new ClassPathXmlApplicationContext("spring-annotation.xml");
-        personService = (PersonService)ctx.getBean("personService");
+        /*AbstractApplicationContext ctx = new ClassPathXmlApplicationContext("spring-annotation.xml");
+        personService = (PersonService)ctx.getBean("personService");*/
         personService.save();
-        ctx.close();
+        //ctx.close();
     }
 
     @Test
