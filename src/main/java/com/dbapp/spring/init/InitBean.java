@@ -11,20 +11,20 @@ import javax.annotation.PostConstruct;
 public class InitBean implements InitializingBean{
 
     public InitBean(){
-        System.out.println("InitBean: constructor");
+        System.out.println("branch dev InitBean: constructor");
     }
 
     @PostConstruct
     public void postConstruct(){
-        System.out.println("InitBean: postConstruct");
+        System.out.println("branch dev InitBean: postConstruct");
     }
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        System.out.println("InitBean: afterPropertiesSet");
+        System.out.println("branch dev InitBean: afterPropertiesSet");
     }
 
     public void initMethod() {
-        System.out.println("InitBean: init-method");
+        System.out.println("branch dev InitBean: init-method");
     }
 }
