@@ -12,19 +12,23 @@ public class InitBean implements InitializingBean{
 
     public InitBean(){
         System.out.println("branch master InitBean: constructor");
+        System.out.println("branch dev InitBean: constructor");
     }
 
     @PostConstruct
     public void postConstruct(){
         System.out.println("branch master InitBean: postConstruct");
+        System.out.println("branch dev InitBean: postConstruct");
     }
 
     @Override
     public void afterPropertiesSet() throws Exception {
         System.out.println("branch master InitBean: afterPropertiesSet");
+        System.out.println("branch dev InitBean: afterPropertiesSet");
     }
 
     public void initMethod() {
         System.out.println("branch master InitBean: init-method");
+        System.out.println("branch dev InitBean: init-method");
     }
 }
