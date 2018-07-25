@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService{
 
     public void add() {
         System.out.println("SERVICE用户添加");
-        userDao.add();
+        //userDao.add();
     }
 
     public void update() {

@@ -12,33 +12,29 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.PostConstruct;
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:spring-annotation.xml"})
+/*@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath:spring-annotation.xml"})*/
 public class SpringAnnotationTest {
 
     @Autowired
     private PersonService personService;
-    @PostConstruct
-    public void init(){
-        System.out.println("========SpringAnnotationTest init===========");
-    }
 
-    @Before
+    //@Before
     public void setUp() throws Exception {
         System.out.println("==========setUp==========");
     }
 
-    @After
+    //@After
     public void tearDown() throws Exception {
         System.out.println("==========tearDown==========");
     }
 
     @Test
     public void testAnnotationConfig() throws Exception {
-        /*AbstractApplicationContext ctx = new ClassPathXmlApplicationContext("spring-annotation.xml");
-        personService = (PersonService)ctx.getBean("personService");*/
+        AbstractApplicationContext ctx = new ClassPathXmlApplicationContext("spring-annotation.xml");
+        personService = (PersonService)ctx.getBean("personService");
         personService.save();
-        //ctx.close();
+        ctx.close();
     }
 
     @Test

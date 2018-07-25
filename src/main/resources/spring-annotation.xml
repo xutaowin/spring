@@ -12,7 +12,12 @@
 	<bean id="personDao" class="com.dbapp.spring.dao.impl.PersonDaoImpl" ></bean>
 	<bean id="personService" class="com.dbapp.spring.service.impl.PersonServiceImpl"></bean>-->
 
+	<bean id="initBean" class="com.dbapp.spring.init.InitBean" init-method="initMethod"/>
 	<!--开启自动扫描-->
-	<context:component-scan base-package="com.dbapp"/>
+	<context:component-scan base-package="com.dbapp">
+		<!--忽略指定的bean扫描-->
+		<context:exclude-filter type="assignable" expression="com.dbapp.spring.init.InitBean"/>
+	</context:component-scan>
+
 
 </beans>
