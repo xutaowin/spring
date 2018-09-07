@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService{
 
     public void update() {
         System.out.println("SERVICE用户更新");
-        userDao.update();
+        //userDao.update();
     }
 
     public UserDao getUserDao() {
